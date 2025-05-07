@@ -1,11 +1,12 @@
 import axios from "axios";
 import sourceMap from "source-map-js";
 const getSourceMap = async (url) => {
+  console.log('%c [ url ]-4', 'font-size:13px; background:pink; color:#bf2c9f;', url)
   const res = await axios.get(url);
   return res.data;
 };
 const findCodeBySourceMap = async (stackFrame) => {
-  console.log("%c [ stackFrame ]-7", "font-size:13px; background:pink; color:#bf2c9f;", stackFrame);
+  console.log("%c [ stackFrame ]-7", "font-size:13px; background:pink; color:#bf2c9f;", stackFrame.fileName);
   //获取map文件
   const fileContent = await getSourceMap(stackFrame.fileName + ".map");
   //解析map文件
