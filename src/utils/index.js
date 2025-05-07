@@ -7,9 +7,9 @@ const getSourceMap = async (url) => {
 const findCodeBySourceMap = async (stackFrame) => {
   console.log("%c [ stackFrame ]-7", "font-size:13px; background:pink; color:#bf2c9f;", stackFrame);
   //获取map文件
-  const sourceMap = await getSourceMap(stackFrame.filename + ".map");
+  const fileContent = await getSourceMap(stackFrame.filename + ".map");
   //解析map文件
-  const consumer = await new sourceMap.SourceMapConsumer(sourceMap);
+  const consumer = await new sourceMap.SourceMapConsumer(fileContent);
   //获取源码
   const originalPosition = consumer.originalPositionFor({
     line: stackFrame.lineNumber,
